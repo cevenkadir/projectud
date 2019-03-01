@@ -1,2 +1,2 @@
-# projectud
+# projectuμ
 Directional Muon Detector
