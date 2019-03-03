@@ -1,2 +1,2 @@
 # projectμd
-Directional Muon Detector
+Directional Muon detector
