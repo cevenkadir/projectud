@@ -1,0 +1,39 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Project - Home Page</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css" />
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar-top">
+            <div class="navbar-logo">
+                <img src="{% static 'img/logo.png' %}" alt="">
+                <div class="navbar-logo-subtext">directional muon detector</div>
+            </div>
+            {% if raspi_status %}
+            <div class="device-status online">
+                <i class="fas fa-signal"></i> <b>online</b>
+            {% else %}
+            <div class="device-status offline">
+                <i class="fas fa-window-close"></i> <b>offline</b>
+            {% endif %}
+            </div>
+        </div>
+        <div class="navbar-bottom">
+            <div class="navbar-buttons">
+                <button class="vl" title="Homepage"><i class="fas fa-home"></i></button>
+                <button title="Data"><i class="fas fa-chart-bar"></i><div>DATA</div></button>
+            </div>
+        </div>
+    </div>
+    <h1>
+        This is the homepage.
+    </h1>
+    <p>This is the paragraph.</p>
+</body>
+</html>

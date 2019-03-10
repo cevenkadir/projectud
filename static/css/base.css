@@ -1,0 +1,83 @@
+* { font-family: 'Work Sans', sans-serif}
+
+body {
+    margin: 0;
+    background-color: #fca41c;
+}
+
+.navbar {
+    background-color: #ffffff;
+}
+
+.navbar .navbar-top {
+    padding-bottom: 0.5em;
+}
+
+.navbar .navbar-bottom {
+    margin-top: -1.5em;
+}
+
+.navbar .navbar-logo img {
+    width: 10em;
+    margin: 1.5em;
+    margin-bottom: 0;
+}
+
+.navbar .navbar-logo {
+    display: inline-grid;
+}
+
+.navbar .navbar-logo .navbar-logo-subtext {
+    font-size: x-small;
+    text-align: right;
+}
+
+.navbar .device-status {
+    display: -webkit-inline-box;
+    font-size: 1em;
+    position: absolute;
+    right: 0;
+    margin: auto;
+    margin-right: 2.5em;
+    margin-top: 2.5em;
+}
+
+.navbar .online {
+    color: #65DE81;
+}
+
+.navbar .offline {
+    color: #FF8F9B;
+}
+
+.navbar .navbar-buttons {
+    margin-left: 15em;
+}
+
+.navbar .navbar-buttons button {
+    border: none;
+    display: -webkit-inline-box;
+    cursor: pointer;
+    padding: 1em 1.5em 0.5em 1.5em;
+    background-color: white;
+    color: #3b3e42;
+    font-weight: 500;
+    margin-right: 0.5em
+}
+
+.navbar .navbar-buttons button:hover {
+    background-color: #fca040;
+    color: white
+}
+
+
+
+.navbar .navbar-buttons button i {
+    margin-right: 0.25em;
+    font-size: 1.25em;
+}
+
+.navbar .navbar-buttons button div {
+    display: -webkit-inline-box;
+    vertical-align: top
+}
