@@ -1,9 +1,9 @@
 from flask import Flask, request, jsonify
 
-import socket
+import socket, os
 
 app = Flask(__name__)
-
+#os.environ.get('AUTH_KEY')
 @app.route('/', methods=['GET'])
 def check_status():
     return jsonify({'status': True})
