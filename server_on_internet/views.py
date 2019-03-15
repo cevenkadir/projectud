@@ -1,39 +1,25 @@
+from django.conf import settings
 from django.shortcuts import render
-#from django.http import HttpResponse
 from django.views.generic import TemplateView
 
 import socket, urllib.request, json, requests
 
 def check_server(url, port):
-    r = requests.get("https://"+url)
+    if url == "localhost":
+        http_type = "http://"
+    else:
+        http_type = "https://"
     try:
-        if r.json()['status']:
-            return True
-        else:
-            return False
+        r = requests.post("{}{}:{}".format(http_type, url, port), json={"auth_key": settings.AUTH_KEY})
+        return r.json()['status']
     except:
         return False
-
-
-
-    #sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    #ock.settimeout(5)
-    #result = sock.connect_ex((url, port))
-    #if result == 0:
-    #    return True
-    #else:
-    #    try:
-    #        urllib.request.urlopen(url)
-    #    except urllib.error.HTTPError as err:
-    #        if err.code == 404:
-    #            return False
-    #        else:
-    #            return True
 
 class HomePageView(TemplateView):
     template_name = 'base.html'
 
     def get_context_data(self, *args, **kwargs):
         context = super(HomePageView, self).get_context_data(*args, **kwargs)
-        context['raspi_status'] = check_server('projectud-kadrocuk.pitunnel.com', 80)
+        context['raspi_status'] = check_server('localhost', 5000)
+        #context['raspi_status'] = check_server('projectud-kadrocuk.pitunnel.com', 80)
         return context
