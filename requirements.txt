@@ -3,7 +3,9 @@ chardet==3.0.4
 colorama==0.4.1
 cycler==0.10.0
 decorator==4.4.0
+dj-database-url==0.5.0
 Django==2.2
+django-heroku==0.3.1
 django-multiupload==0.5.2
 gunicorn==19.9.0
 idna==2.8
@@ -15,6 +17,7 @@ networkx==2.3
 numpy==1.16.2
 opencv-python==4.1.0.25
 Pillow==6.0.0
+psycopg2==2.8.2
 psycopg2-binary==2.8.2
 pyparsing==2.4.0
 python-dateutil==2.8.0
@@ -29,3 +32,4 @@ six==1.12.0
 sorl-thumbnail==12.5.0
 sqlparse==0.3.0
 urllib3==1.24.2
+whitenoise==4.1.2
