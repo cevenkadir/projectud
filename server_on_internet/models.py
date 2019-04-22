@@ -57,7 +57,7 @@ class Muon(models.Model):
             calculated_angle = np.rad2deg(np.arctan((a * delta_ls)/d))
             print(calculated_angle)
             self.angle = calculated_angle
-            self.detection_time = creation_time_obj
+            #self.detection_time = creation_time_obj
             self.save()
 
 def context_numbers_of_muons(request):
