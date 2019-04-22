@@ -1,4 +1,7 @@
-
+server_on_internet/bin/
+server_on_internet/share/
+server_on_internet/lib/
+server_on_internet/include/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -123,10 +126,3 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-
-.vscode
-
-media/muons/
-share/
-bin/
-include/
