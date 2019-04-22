@@ -5,6 +5,7 @@ cycler==0.10.0
 decorator==4.4.0
 Django==2.2
 django-multiupload==0.5.2
+gunicorn==19.9.0
 idna==2.8
 imageio==2.5.0
 imutils==0.5.2
@@ -14,6 +15,7 @@ networkx==2.3
 numpy==1.16.2
 opencv-python==4.1.0.25
 Pillow==6.0.0
+psycopg2-binary==2.8.2
 pyparsing==2.4.0
 python-dateutil==2.8.0
 python-dotenv==0.10.1

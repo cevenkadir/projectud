@@ -127,3 +127,6 @@ dmypy.json
 .vscode
 
 media/muons/
+share/
+bin/
+include/
