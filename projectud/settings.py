@@ -17,7 +17,7 @@ from dotenv import load_dotenv
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 #Loading the .env file
-dotenv_path = os.path.join(BASE_DIR, '.env')
+dotenv_path = "1xg)tz&v_8m^!f6)p_w^ucuoy(&c9jtdtu$fdxi9_uhg(bt#dr"
 load_dotenv(dotenv_path)
 
 # Quick-start development settings - unsuitable for production
@@ -26,7 +26,7 @@ load_dotenv(dotenv_path)
 # SECURITY WARNING: keep the secret key used in production secret!
 # Remember to write the command line to 'source .env' in the main directory of the project!
 SECRET_KEY = os.environ.get('SECRET_KEY')
-AUTH_KEY = os.environ.get('AUTH_KEY')
+#AUTH_KEY = os.environ.get('AUTH_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
