@@ -1,3 +1,6 @@
 from django.contrib import admin
+from .models import Muon
 
-# Register your models here.
+
+
+admin.site.register(Muon)

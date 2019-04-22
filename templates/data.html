@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block extrahead %}
+<script type="text/javascript">
+$(function() {
+var ctx = document.getElementById('muonCountsChart').getContext('2d');
+var myChart = new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: [],
+    datasets: [{
+      data: [],
+      backgroundColor: 'rgba(0, 0, 0, 1)',
+      fill: false,
+      showLine: false,
+      pointRadius: 5,
+      pointStyle: 'rectRot'
+    }]
+  },
+  options: {
+                responsive: false
+            }
+
+});
+{% for angle, count in counted_angles.items %}
+myChart.data.labels.push({{angle}});
+myChart.data.datasets.forEach((dataset) => {
+        dataset.data.push({{count}});
+    });
+    myChart.update();
+{% endfor %}
+
+});
+</script>
+{% endblock extrahead %}
+
+
+{% block content %}
+</canvas><canvas id="muonCountsChart" style="width: 50%"></canvas>
+
+{% endblock content %}

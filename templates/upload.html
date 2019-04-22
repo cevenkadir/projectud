@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form action="" method="post" autocomplete="off" enctype="multipart/form-data">
+    {% csrf_token %}
+        <label for="id_file_field">File field:</label><input type="file" name="file_field" multiple="" required="" id="id_file_field"> <br>
+        <input type="submit" value="Submit">
+    </form>
+{% endblock content %}

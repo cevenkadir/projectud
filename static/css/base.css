@@ -5,6 +5,10 @@ body {
     background-color: #fca41c;
 }
 
+button:focus {
+    outline: none;
+  }
+
 .navbar {
     background-color: #ffffff;
 }
@@ -32,7 +36,7 @@ body {
     text-align: right;
 }
 
-.navbar .device-status {
+.navbar .right-side {
     display: -webkit-inline-box;
     font-size: 1em;
     position: absolute;
@@ -40,6 +44,7 @@ body {
     margin: auto;
     margin-right: 2.5em;
     margin-top: 2.5em;
+    margin-top: 0.75em;
 }
 
 .navbar .online {
@@ -80,4 +85,11 @@ body {
 .navbar .navbar-buttons button div {
     display: -webkit-inline-box;
     vertical-align: top
+}
+
+#muonCountsChart {
+    background-color: white;
+    margin: auto;
+    margin-top: 50px;
+    padding: 10px;
 }

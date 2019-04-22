@@ -7,33 +7,42 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,700,900" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css" />
+
 </head>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<script src="{% static 'js/jquery-3.4.0.min.js' %}"></script>
+{% block extrahead %}{% endblock extrahead %}
 <body>
     <div class="navbar">
         <div class="navbar-top">
             <div class="navbar-logo">
                 <img src="{% static 'img/logo.png' %}" alt="">
-                <div class="navbar-logo-subtext">directional muon detector</div>
+                <div class="navbar-logo-subtext">directional muon detection</div>
             </div>
-            {% if raspi_status %}
-            <div class="device-status online">
+            <div class="right-side" style="text-align: center;">
+
+                <i class="fas fa-hashtag" style="font-size: 2em;"></i> of<br><b>muons</b><br><i style="font-size: 0.6em;">added to the database</i>
+
+                <div style="padding-top: 1em;display: -webkit-box;font-size: 1.5em;padding-left: 0.5em;color:#3b3e42;"><i class="fas fa-angle-left" style="color:#fca41c;margin-right:0.5em;margin-left: -0.25em"></i>{{ number_of_muons }}</div>
+            </div>
+            <!--{% if raspi_status %}
+            <div class="right-side online">
                 <i class="fas fa-signal"></i> <b>online</b>
             {% else %}
-            <div class="device-status offline">
+            <div class="right-side offline">
                 <i class="fas fa-window-close"></i> <b>offline</b>
             {% endif %}
             </div>
+            -->
         </div>
         <div class="navbar-bottom">
             <div class="navbar-buttons">
-                <button class="vl" title="Homepage"><i class="fas fa-home"></i></button>
-                <button title="Data"><i class="fas fa-chart-bar"></i><div>DATA</div></button>
+                <button onclick="location.href='/'" class="vl" title="Homepage"><i class="fas fa-home"></i></button>
+                <button onclick="location.href='data'" title="Data"><i class="fas fa-chart-bar"></i><div>DATA</div></button>
+                <button onclick="location.href='upload'" title="Upload"><i class="fas fa-upload"></i><div>UPLOAD</div></button>
             </div>
         </div>
     </div>
-    <h1>
-        This is the homepage.
-    </h1>
-    <p>This is the paragraph.</p>
+    {% block content %}{% endblock content %}
 </body>
 </html>
