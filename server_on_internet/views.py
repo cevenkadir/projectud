@@ -36,7 +36,7 @@ class HomePageView(TemplateView):
 class UploadParticlesView(FormView):
     form_class = UploadParticlesForm
     template_name = 'upload.html'  # Replace with your template.
-    success_url = '/'  # Replace with your URL or reverse().
+    success_url = '#success'  # Replace with your URL or reverse().
 
     def post(self, request, *args, **kwargs):
         form_class = self.get_form_class()

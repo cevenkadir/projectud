@@ -36,7 +36,7 @@ button:focus {
     text-align: right;
 }
 
-.navbar .right-side {
+.navbar .navbar-right-side {
     display: -webkit-inline-box;
     font-size: 1em;
     position: absolute;
@@ -92,4 +92,28 @@ button:focus {
     margin: auto;
     margin-top: 50px;
     padding: 10px;
+}
+
+.particle-upload-area {
+    display: grid;
+    text-align: center;
+    margin: 65px 450px;
+}
+
+.page {
+    display: flow-root;
+}
+
+.page .notifications {
+    position: absolute;
+    right: 0;
+}
+
+.page .notifications .noty_bar {
+    background-color: #FFEAA8;
+    position: relative;
+    padding: 10px 15px;
+    border-radius: 4px !important;
+    box-shadow: 1px 1px 20px rgba(0,0,0,.2);
+    margin: 10px;
 }

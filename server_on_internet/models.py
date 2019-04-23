@@ -5,22 +5,16 @@ from recording_muons_on_pc.detecting_spar import are_there_particles
 import os, cv2, imutils
 from skimage import measure
 import numpy as np
-import datetime as dt
+
+from django.utils import timezone
 
 
 class Muon(models.Model):
     angle = models.FloatField('Calculated angle',default=0)
-    detection_time = models.DateTimeField('Detection date', default=dt.datetime.now())
+    detection_time = models.DateTimeField('Detection date', default=timezone.now())
     image = models.ImageField('Muon image', upload_to='muons/', default='muons/muon_2019_4_18_14_17_12_650984.webp')
 
-
-
     def process_muon(self):
-        #extract the creation date of the image
-        created = os.stat(self.image.path).st_ctime
-        creation_time_obj = dt.datetime.fromtimestamp(created)
-
-
         img = cv2.imread(self.image.path)
         mask = are_there_particles(img, add_mask=True)[1]
 
@@ -56,15 +50,12 @@ class Muon(models.Model):
 
             calculated_angle = np.rad2deg(np.arctan((a * delta_ls)/d))
             print(calculated_angle)
+
             self.angle = calculated_angle
-            #self.detection_time = creation_time_obj
             self.save()
+        else:
+            self.image.delete(save=True)
+            self.delete()
 
 def context_numbers_of_muons(request):
     return {'number_of_muons': Muon.objects.count()}
-    # def save(self, *args, **kwargs):
-
-    #     super(Muon, self).save(*args, **kwargs)
-    #     self.process_muon()
-
-        #super(Muon, self).save(*args, **kwargs)
