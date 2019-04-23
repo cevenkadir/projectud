@@ -8,6 +8,8 @@ import numpy as np
 
 from django.utils import timezone
 
+import datetime as dt
+
 
 class Muon(models.Model):
     angle = models.FloatField('Calculated angle',default=0)
@@ -52,6 +54,11 @@ class Muon(models.Model):
             print(calculated_angle)
 
             self.angle = calculated_angle
+
+            #setting the creation
+            creation_time = dt.datetime.strptime(os.path.basename(self.image.name), 'muon_%Y-%m-%d_%H%M%S.%f.jpg')
+            self.detection_time = creation_time
+
             self.save()
         else:
             self.image.delete(save=True)
