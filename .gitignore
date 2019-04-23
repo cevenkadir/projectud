@@ -1,8 +1,3 @@
-server_on_internet/bin/
-server_on_internet/share/
-server_on_internet/lib/
-server_on_internet/include/
-
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -128,3 +123,11 @@ dmypy.json
 .pyre/
 
 server_on_internet/migrations/
+
+projectud/bin/
+projectud/share/
+projectud/include/
+
+.vscode/
+
+media/
