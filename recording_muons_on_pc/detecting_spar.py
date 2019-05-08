@@ -15,7 +15,7 @@ def are_there_particles(image, which='', add_mask=False):
         #blurred = cv2.GaussianBlur(gray_version, (11, 11), 0)
 
         # threshold
-        thresh = cv2.threshold(gray_version, 20, 255, cv2.THRESH_BINARY)[1]
+        thresh = cv2.threshold(gray_version, 35, 255, cv2.THRESH_BINARY)[1]
 
         muons = measure.label(thresh, neighbors=4, background=0)
         mask = np.zeros(thresh.shape, dtype="uint8")

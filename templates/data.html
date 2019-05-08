@@ -1,41 +1,90 @@
 {% extends "base.html" %}
+{% load mathfilters %}
 
 {% block extrahead %}
 <script type="text/javascript">
-$(function() {
-var ctx = document.getElementById('muonCountsChart').getContext('2d');
-var myChart = new Chart(ctx, {
-  type: 'line',
-  data: {
-    labels: [],
-    datasets: [{
-      data: [],
-      backgroundColor: 'rgba(0, 0, 0, 1)',
-      fill: false,
-      showLine: false,
-      pointRadius: 5,
-      pointStyle: 'rectRot'
-    }]
-  },
-  options: {
-                responsive: false
-            }
+google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
 
-});
-{% for angle, count in counted_angles.items %}
-myChart.data.labels.push({{angle}});
-myChart.data.datasets.forEach((dataset) => {
-        dataset.data.push({{count}});
-    });
-    myChart.update();
-{% endfor %}
+      function drawChart () {
 
-});
+        var data = new google.visualization.DataTable();
+        data.addColumn('number', 'Angle');
+
+        data.addColumn('number', 'Theoretical');
+        data.addColumn('number', 'Real');
+        data.addColumn('number', 'Classical');
+        data.addColumn('number', 'Best fitting');
+
+
+
+
+        {% for angle, count in counted_angles.items %}
+        data.addRows([
+          [{{ angle|floatformat:2 }}, null, {{count}}, null, null]
+        ]);
+        {% endfor %}
+
+        {% for angle, count in theortical_data.items %}
+        data.addRows([
+          [{{ angle|floatformat:2 }}, {{count|floatformat:2}}, null, null, null]
+        ]);
+        {% endfor %}
+
+        {% for angle, count in theortical_data_classical.items %}
+        data.addRows([
+          [{{ angle|floatformat:2 }}, null, null, {{count|floatformat:2}}, null]
+        ]);
+        {% endfor %}
+
+        {% for angle, count in best_fitting.items %}
+        data.addRows([
+          [{{ angle|floatformat:2 }}, null, null, null, {{count|floatformat:2}}]
+        ]);
+        {% endfor %}
+
+        var options = {
+          width: 1000,
+          height: 550,
+            title: 'Muon counts with respect to its incoming angle',
+            subtitle: 'Subtitle',
+
+
+          vAxis: {
+            
+            viewWindow: {min:0},
+            title: 'Counts'
+          },
+
+          hAxis: {
+            title: 'Angle in degrees'
+          },
+
+
+          series: {
+
+            0: {
+              lineWidth: 2
+      },
+            1: {
+              pointSize: 10,
+              lineWidth: 0
+      },
+
+      
+          }
+        };
+
+        var chart = new google.visualization.ComboChart(document.getElementById('muonCountsChart'));
+
+        chart.draw(data, options);
+      }
 </script>
+
 {% endblock extrahead %}
 
 
 {% block content %}
-</canvas><canvas id="muonCountsChart" style="width: 50%"></canvas>
+<div id="muonCountsChart"></div>
 
 {% endblock content %}

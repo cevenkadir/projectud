@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+
+{% block extrahead %}
+<style>
+    .page {
+        margin-top: -12vh;
+    }
+</style>
+{% endblock extrahead %}
+
+{% block content %}
+<div id="trigger1"></div>
+<div class="scrolling-contents">
+    <div id="s-content-1" class="s-content content-bigword-image">
+        <div class="bigword">WHAT</div>
+        <div class="subcontent-image" style=""></div>
+        <span id="expand_icon" class="material-icons"
+            style="font-weight: 900;color: #3b3e42;width: 100%;margin-top: -96px;position: absolute; text-align: center;">expand_more</span>
+    </div>
+    <br>
+    <div id="s-content-2" class="s-content just-text">
+        <h4 class="header1">Title1</h4>
+            <i class="material-icons">
+                remove
+            </i>
+            <h1 class="header2">Title2</h1>
+            <p class="parag">Perhaps the largest downside of smooth scrolling is the potential to mismanage focus.
+                Scrolling to an element in JavaScript is fine, so long as you almost move focus to where you are
+                scrolling. Heather Migliorisi covers that in detail here.</p>
+    </div>
+    <br>
+    <div id="s-content-3" class="s-content just-text" style="background-color: #fca41c;">
+        <img class="image" src="/static/img/physicists.png">
+        <h4 class="header1">Title1</h4>
+            <i class="material-icons">
+                remove
+            </i>
+            <h1 class="header2">Title2</h1>
+    </div>
+    <br>
+    <div id="s-content-4" class="s-content left-text-right-image">
+        <div class="text">
+            <h4 class="header1">Title1</h4>
+            <h1 class="header3">asd</h1>
+            <h2 class="header4">asddd</h2>
+            <p class="parag">Jonny has been responsible for bringing concepts to life for clients such as Nintendo, Estée Lauder,
+                Oxfam, Scribner, Sony, and many others. His work has been recognised by One Show, ADC, Webby Awards, and
+                Cannes Lions. When Jonny isn't busy educating people on the difference between fonts and typefaces, he
+                can be found taking part in competitive tickling competitions across the UK.</p>
+        </div>
+        <div class="image">
+                <img class="image" src="/static/img/physicists.png">
+        </div>
+    </div>
+    <br>
+    <div id="s-content-5" class="s-content content-bigword-image" style="background-color: #fca41c;">
+        <div class="bigword">HOW</div>
+        <div class="subcontent-image" style="background-image:url(static/img/what_img.png)"></div>
+    </div>
+    <br>
+    <div id="s-content-6" class="s-content just-text">
+        <h4 class="header1">Title1</h4>
+            <i class="material-icons">
+                remove
+            </i>
+            <h1 class="header2">Title2</h1>
+            <p class="parag">Perhaps the largest downside of smooth scrolling is the potential to mismanage focus.
+                Scrolling to an element in JavaScript is fine, so long as you almost move focus to where you are
+                scrolling. Heather Migliorisi covers that in detail here.</p>
+    </div>
+
+
+</div>
+
+
+
+<script>
+
+
+
+    $(window).scroll(function () {
+
+      //  $('.bigword').css('opacity', 1 - (window.pageYOffset * 2.5) / $(window).height());
+        //$('.subcontent-image').css('opacity', 1 - (window.pageYOffset * 5) / $(window).height());
+        $('#expand_icon').css('opacity', 1 - (window.pageYOffset * 10) / $(window).height());
+        
+    });
+
+    function smoothFadeScroll(s_content_num) {
+        $(window).scroll(function () {
+            var id = "#s-content-" + s_content_num + " ";
+            var scr_due_position = $(id).offset().top - window.pageYOffset;
+            $(id + ' .subcontent-image, ' +id + ' .bigword,' +id + '.image, ' + id + '.header1, ' + id + '.header2,' + id + '.header3,' + id + '.header4,' + id + '.parag, ' + id + '.material-icons').css('opacity', 2.5 - Math.exp(8 * (scr_due_position / $(id).height()) ** 2));
+        });
+    }
+
+    smoothFadeScroll(1);
+    smoothFadeScroll(2);
+    smoothFadeScroll(3);
+    smoothFadeScroll(4);
+    smoothFadeScroll(5);
+    smoothFadeScroll(6);
+
+</script>
+
+{% endblock content %}

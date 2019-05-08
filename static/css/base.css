@@ -1,8 +1,21 @@
-* { font-family: 'Work Sans', sans-serif}
+
+* {
+    font-family: 'Work Sans', sans-serif;
+    --mdc-theme-primary: #e2ac58;
+    
+}
 
 body {
     margin: 0;
-    background-color: #fca41c;
+    /*background-color: #fca41c;*/
+    padding-bottom: 50px;
+    overflow-x: hidden;
+    transition-duration: 0.5s;
+
+    background: url('/static/img/cosmic_ray_background.jpg');
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-color: #9f783d;
 }
 
 button:focus {
@@ -10,21 +23,21 @@ button:focus {
   }
 
 .navbar {
-    background-color: #ffffff;
+    color: white;
+    height: 12vh;
 }
 
 .navbar .navbar-top {
-    padding-bottom: 0.5em;
-}
-
-.navbar .navbar-bottom {
-    margin-top: -1.5em;
+    
 }
 
 .navbar .navbar-logo img {
-    width: 10em;
     margin: 1.5em;
     margin-bottom: 0;
+    -webkit-mask-box-image: url(/static/img/logo.png);
+    height: 37px;
+    width: 160px;
+    background-color: white;
 }
 
 .navbar .navbar-logo {
@@ -47,61 +60,16 @@ button:focus {
     margin-top: 0.75em;
 }
 
-.navbar .online {
-    color: #65DE81;
-}
-
-.navbar .offline {
-    color: #FF8F9B;
-}
-
-.navbar .navbar-buttons {
-    margin-left: 15em;
-}
-
-.navbar .navbar-buttons button {
-    border: none;
-    display: -webkit-inline-box;
-    cursor: pointer;
-    padding: 1em 1.5em 0.5em 1.5em;
-    background-color: white;
-    color: #3b3e42;
-    font-weight: 500;
-    margin-right: 0.5em
-}
-
-.navbar .navbar-buttons button:hover {
-    background-color: #fca040;
-    color: white
-}
-
-
-
-.navbar .navbar-buttons button i {
-    margin-right: 0.25em;
-    font-size: 1.25em;
-}
-
-.navbar .navbar-buttons button div {
-    display: -webkit-inline-box;
-    vertical-align: top
-}
-
 #muonCountsChart {
     background-color: white;
-    margin: auto;
-    margin-top: 50px;
+    margin: 50px auto;
     padding: 10px;
-}
-
-.particle-upload-area {
-    display: grid;
-    text-align: center;
-    margin: 65px 450px;
+    display: table;
 }
 
 .page {
     display: flow-root;
+    
 }
 
 .page .notifications {
@@ -116,4 +84,228 @@ button:focus {
     border-radius: 4px !important;
     box-shadow: 1px 1px 20px rgba(0,0,0,.2);
     margin: 10px;
+}
+
+.listing_table img{
+    height: 50px;
+    image-rendering: pixelated;
+}
+
+.listing_table {
+    margin: 50px auto;
+}
+
+.muon_card {
+    width: 220px;
+    display: inline-flex !important;
+    margin: 20px;
+}
+
+.muon_card .mdc-card__media {
+    image-rendering: pixelated;
+}
+
+.muon_card .mdc-card__primary {
+    padding: 0px 15px;
+}
+
+.muon_card .mdc-card__title {
+    margin-top: 0;
+    font-size: 109%;
+}
+
+.muon_card .mdc-linear-progress {
+    margin: 10px 0;
+}
+
+.muon_card .mdc-linear-progress .mdc-linear-progress__bar-inner {
+    background-color: #e2ac58;
+}
+
+.muon-list-pagination {
+    text-align: center;
+}
+
+.muon-list-pagination li {
+    display: inline;
+}
+
+hr.style1 {
+    border-color: darkslategray;
+    border-bottom-width: inherit;
+}
+
+.navbar-bottom {
+    overflow: hidden;
+  background-color: #3b3e42;
+  position: fixed;
+  bottom: 0;
+}
+
+.navbar-bottom .mdc-tab__text-label {
+    color: #e2ac58 !important;
+}
+
+.navbar-bottom .material-icons{
+    color: white !important;
+}
+
+.particle-upload-area {
+    padding: 20px;
+    background-color: rgba(159, 120, 61, 0.75);
+    border-radius: 20px;
+    text-align: center;
+    margin: auto 420px;
+}
+
+.particle-upload-area .mdc-button--raised{
+    background-color: #3b3e42 !important;
+}
+
+.particle-upload-area .mdc-button {
+    margin: 5px;
+}
+
+#image_list_to_upload {
+    text-align: left;
+    display: inline-block;
+    max-height: 400px;
+    overflow: auto;
+
+}
+
+#image_list_to_upload .mdc-list-item {
+    width: auto;
+}
+
+#image_list_to_upload .mdc-list-item__graphic img {
+    height: 35px;
+    margin-left: 15px;
+}
+
+#image_list_to_upload .mdc-list-item__text {
+    margin-right: auto;
+}
+
+.fs {height: 100vh;}
+
+/* =Simple animation up */
+.scrolling-contents {
+    display: block;
+}
+
+.scrolling-contents .s-content{
+    height: 100vh;
+    width: 100vw;
+    display: table-cell;
+    position: relative;
+}
+
+.scrolling-contents .content-bigword-image {
+    display: block;
+}
+
+.scrolling-contents .content-bigword-image .subcontent-image {
+    background-size: 100vh;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    filter: saturate(2);
+    height: 100%;
+    width: 100%;
+    transition-duration: 0.001s;
+}
+
+.scrolling-contents .content-bigword-image .bigword {
+    text-align: center;
+    font-size: 30vh;
+    font-weight: 900;
+    position: absolute;
+    width: -webkit-fill-available;
+    /* height: 100vh; */
+    transform: translateY(100%);
+    z-index: 0;
+    color: #a52a2a;
+    transition-duration: 0.5s;
+}
+
+.scrolling-contents .just-text {
+    max-width: fit-content;
+    padding: 0 18vw;
+    text-align: center;
+    vertical-align: middle;
+    /* position: relative; */
+    display: table-cell;
+    transition-duration: 0.5s;
+}
+
+.scrolling-contents .just-text .header1,
+.scrolling-contents .just-text .header2,
+.scrolling-contents .just-text .parag,
+.scrolling-contents .just-text .material-icons {
+    transition-duration: 0.5s !important;
+}
+
+.scrolling-contents .header1 {
+    font-weight: 400;
+    margin-bottom: 0;
+
+}
+
+.scrolling-contents .header2 {
+    transition-delay: 0.1s;
+    transition-duration: 0.5s;
+}
+
+
+.scrolling-contents .parag {
+    transition-duration: 0.5s;
+    transition-delay: 0.2s;
+}
+
+.scrolling-contents .just-text .material-icons {
+    transition-delay: 0.3s;
+    transition-duration: 0.5s;
+    font-weight: 900;
+    color: #a52a2a;
+}
+
+.scrolling-contents .header3 {
+    transition-duration: 0.5s;
+    transition-delay: 0.4s;
+    font-size: 8vh;
+    margin: 2vh 0;
+}
+
+.scrolling-contents .header4 {
+    transition-delay: 0.5s;
+    transition-duration: 0.5s;
+}
+
+.scrolling-contents .image {
+    transition-delay: 0.1s;
+    transition-duration: 0.5s;
+}
+
+
+
+.scrolling-contents .left-text-right-image{
+    display: table;
+}
+
+.scrolling-contents .left-text-right-image .text{
+    max-width: fit-content;
+    padding-left: 18vw;
+    width: 32vw;
+    vertical-align: middle;
+    /* position: relative; */
+    display: table-cell;
+    transition-duration: 0.5s;
+}
+
+.scrolling-contents .left-text-right-image .image {
+    display: table-cell;
+    vertical-align: middle;
+
+
 }

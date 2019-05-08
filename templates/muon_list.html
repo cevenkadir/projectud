@@ -1,0 +1,58 @@
+
+{% extends "base.html" %}
+{% load mathfilters %}
+
+{% block content %}
+<div style="text-align: center;">
+    {% for i in muons %}
+    <div class="muon_card mdc-card">
+        <div class="mdc-card__primary-action mdc-card__primary-action mdc-ripple-upgraded" tabindex="0">
+            <div class="mdc-card__media mdc-card__media--square mdc-card__media" style="background-image: url({{i.image.url}});"></div>
+            <div class="mdc-card__primary" style='background-color: rgba(101,81,39, {{ i.angle|div:90 }});'>
+                <h3 class="mdc-card__subtitle mdc-typography mdc-typography--subtitle2" style="margin-bottom: 1px;">Detected at the angle of</h3>
+                <h3 class="mdc-card__title mdc-typography mdc-typography--headline8">{{i.angle|floatformat:2}}&deg;</h3>
+                <h4 class="mdc-card__subtitle mdc-typography mdc-typography--subtitle1" style="margin-top: -15px;font-size: 85%;">on {{i.detection_time}}</h4>
+                
+                <hr class="style1">
+                
+                <h3 class="mdc-card__subtitle mdc-typography mdc-typography--subtitle2" style="margin-bottom: 3px;text-align: center;opacity: 0.7;">possibility of being a muon</h3>
+                <div role="progressbar" class="mdc-linear-progress">
+                    <div class="mdc-linear-progress__buffering-dots"></div>
+                    <div class="mdc-linear-progress__buffer"></div>
+                    <div class="mdc-linear-progress__bar mdc-linear-progress__primary-bar" style="transform: scaleX(0.1);">
+                        <span class="mdc-linear-progress__bar-inner" style="display: block;"></span>
+                    </div>
+                    <div class="mdc-linear-progress__bar mdc-linear-progress__secondary-bar">
+                        <span class="mdc-linear-progress__bar-inner"></span>
+                    </div>
+                </div>
+                <h4 class="mdc-card__subtitle mdc-typography mdc-typography--subtitle1" style="margin-top: -5px;margin-bottom: 10px;font-size: 85%;text-align: right;opacity: 0.5;">10%</h4>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% if is_paginated %}
+  <ul class="muon-list-pagination">
+    {% if page_obj.has_previous %}
+      <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in paginator.page_range %}
+      {% if page_obj.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if page_obj.has_next %}
+      <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+{% endif %}
+
+
+{% endblock content %}

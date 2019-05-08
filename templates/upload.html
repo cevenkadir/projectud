@@ -3,8 +3,62 @@
 {% block content %}
 <form class="particle-upload-area" action="" method="post" autocomplete="off" enctype="multipart/form-data">
     {% csrf_token %}
-        <label for="id_file_field">File field:</label>
-        <input type="file" name="file_field" multiple="" required="" id="id_file_field"> <br>
-        <input type="submit" value="Submit">
-    </form>
+    <span class='upload_button'>
+        <button type="button" class="mdc-button mdc-button--outlined" style="color: white;border-color: white;">
+            <span class="material-icons mdc-fab__icon">add_photo_alternate</span>
+            <span class="mdc-fab__label">Select the images</span>
+        </button>
+        <input onchange="FileDetails()" type="file" name="file_field" multiple required="" id="id_file_field"
+            style="display: none;">
+    </span>
+    <br>
+
+
+    <ul id='image_list_to_upload' class="mdc-list mdc-list--two-line">
+        <b style="text-align: center;display: list-item;">No file selected.</b>
+        <span style="text-align: center;display: list-item;">To select image to to upload, click the above button.</span>
+    </ul>
+
+
+    <br>
+    <button type="submit" class="mdc-button mdc-button--raised">
+        <span class="material-icons mdc-fab__icon" style="margin-right: 5px;">cloud_upload</span>
+        <span class="mdc-fab__label">Submit</span>
+    </button>
+</form>
+
+
 {% endblock content %}
+
+{% block end-script %}
+<script type="text/javascript">
+    const uploadButton = document.querySelector('.upload_button .mdc-button--outlined');
+    const realInput = document.getElementById('id_file_field');
+
+    uploadButton.addEventListener('click', () => {
+        realInput.click();
+    });
+
+
+    function FileDetails() {
+        if (realInput.files.length > 0) {
+            document.getElementById('image_list_to_upload').innerHTML = ''
+            for (var i = 0; i <= realInput.files.length - 1; i++) {
+                var img = realInput.files.item(i);
+
+                document.getElementById('image_list_to_upload').innerHTML =
+                    document.getElementById('image_list_to_upload').innerHTML +
+                    '<li class="mdc-list-item" tabindex="0"><span class="mdc-list-item__graphic" aria-hidden="true"><img title="Preview this muon image" src="' +
+                    window.URL.createObjectURL(img) + '"></span><span class="mdc-list-item__text"><span class="mdc-list-item__primary-text">' + img.name +
+                    '</span><span class="mdc-list-item__secondary-text">' + (img.size / 1024).toFixed(2) + ' KB</span></span><button type="button" class="material-icons mdc-icon-button mdc-card__action mdc-card__action--icon" title="Delete this muon image">delete</button></li><li role="separator" class="mdc-list-divider"></li>'
+            }
+        } else if (realInput.files.length == 0) {
+            document.getElementById('image_list_to_upload').innerHTML = '<b style="text-align: center;display: list-item;">No file selected.</b><span style="text-align: center;display: list-item;">To select image to to upload, click the above button.</span>'
+        }
+    }
+
+    function removeFile() {
+        
+    }
+</script>
+{% endblock end-script %}

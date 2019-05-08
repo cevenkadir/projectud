@@ -9,4 +9,5 @@ urlpatterns = [
     path('', views.HomePageView.as_view()),
     path('data', views.DataView.as_view()),
     path('upload', login_required(views.UploadParticlesView.as_view())),
+    path('view', views.MuonListView.as_view(),)
 ]
