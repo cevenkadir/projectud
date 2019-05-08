@@ -166,6 +166,14 @@ hr.style1 {
     margin: 5px;
 }
 
+.particle-upload-area .preview-img{
+
+}
+
+.particle-upload-area .preview-img img{
+    
+}
+
 #image_list_to_upload {
     text-align: left;
     display: inline-block;

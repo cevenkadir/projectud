@@ -16,7 +16,8 @@
 
     <ul id='image_list_to_upload' class="mdc-list mdc-list--two-line">
         <b style="text-align: center;display: list-item;">No file selected.</b>
-        <span style="text-align: center;display: list-item;">To select image to to upload, click the above button.</span>
+        <span style="text-align: center;display: list-item;">To select image to to upload, click the above
+            button.</span>
     </ul>
 
 
@@ -48,17 +49,21 @@
 
                 document.getElementById('image_list_to_upload').innerHTML =
                     document.getElementById('image_list_to_upload').innerHTML +
-                    '<li class="mdc-list-item" tabindex="0"><span class="mdc-list-item__graphic" aria-hidden="true"><img title="Preview this muon image" src="' +
+                    '<li class="mdc-list-item" tabindex="0"><span class="mdc-list-item__graphic non-preview-img" aria-hidden="true"><img title="Preview this muon image" src="' +
                     window.URL.createObjectURL(img) + '"></span><span class="mdc-list-item__text"><span class="mdc-list-item__primary-text">' + img.name +
-                    '</span><span class="mdc-list-item__secondary-text">' + (img.size / 1024).toFixed(2) + ' KB</span></span><button type="button" class="material-icons mdc-icon-button mdc-card__action mdc-card__action--icon" title="Delete this muon image">delete</button></li><li role="separator" class="mdc-list-divider"></li>'
+                    '</span><span class="mdc-list-item__secondary-text">' + (img.size / 1024).toFixed(2) + ' KB</span></span></li><li role="separator" class="mdc-list-divider"></li>';
             }
         } else if (realInput.files.length == 0) {
             document.getElementById('image_list_to_upload').innerHTML = '<b style="text-align: center;display: list-item;">No file selected.</b><span style="text-align: center;display: list-item;">To select image to to upload, click the above button.</span>'
         }
     }
 
-    function removeFile() {
-        
-    }
+    $('.particle-upload-area').change(function () {
+        $('#image_list_to_upload .mdc-list-item .non-preview-img').hover(function () {
+            $(this).removeClass('non-preview-img').addClass('preview-img');
+        });
+    });
+
+
 </script>
 {% endblock end-script %}
