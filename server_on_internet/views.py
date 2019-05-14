@@ -15,6 +15,7 @@ from collections import Counter
 
 import numpy as np
 
+from scipy.optimize import curve_fit
 
 
 def check_server(url, port):
@@ -111,12 +112,22 @@ class DataView(TemplateView):
         x = np.array(list(muons.keys()))
         y = np.array(list(muons.values()))
         z = np.polyfit(x, y, 3)
-        p = np.poly1d(z)
+        # p = np.poly1d(z)
 
         num = 100
         angles = np.array(np.linspace(0, 90, num = num))
 
-        new_y = [p(angle_i) for angle_i in angles]
+        def func(x, a, b, c):
+            return a * np.exp(-b * x) + c
+
+        popt, pcov = curve_fit(func, x, y)
+
+        y = func(x, *popt)
+
+        new_y = [y(angle_i) for angle_i in angles]
+        # new_y = [p(angle_i) for angle_i in angles]
+
+
 
         return dict(zip(angles, new_y))
 

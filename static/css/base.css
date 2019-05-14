@@ -18,6 +18,10 @@ body {
     background-color: #9f783d;
 }
 
+p {
+    font-size: 1.1vw;
+}
+
 button:focus {
     outline: none;
   }
@@ -31,7 +35,7 @@ button:focus {
     
 }
 
-.navbar .navbar-logo img {
+.navbar .navbar-logo img, .projectud-logo {
     margin: 1.5em;
     margin-bottom: 0;
     -webkit-mask-box-image: url(/static/img/logo.png);
@@ -255,7 +259,7 @@ hr.style1 {
 }
 
 .scrolling-contents .header1 {
-    font-weight: 400;
+    font-weight: 900;
     margin-bottom: 0;
 
 }
@@ -271,7 +275,7 @@ hr.style1 {
     transition-delay: 0.2s;
 }
 
-.scrolling-contents .just-text .material-icons {
+.scrolling-contents .dash-icon {
     transition-delay: 0.3s;
     transition-duration: 0.5s;
     font-weight: 900;
@@ -279,6 +283,7 @@ hr.style1 {
 }
 
 .scrolling-contents .header3 {
+    font-size: 4vw !important;
     transition-duration: 0.5s;
     transition-delay: 0.4s;
     font-size: 8vh;
@@ -316,4 +321,8 @@ hr.style1 {
     vertical-align: middle;
 
 
+}
+
+.LI-profile-badge{
+    display: -webkit-inline-box;
 }
