@@ -18,11 +18,19 @@
         <div class="subcontent-image" style=""></div>
         <span id="expand_icon" class="material-icons"
             style="font-weight: 900;color: #3b3e42;width: 100%;margin-top: -96px;position: absolute; text-align: center;">expand_more</span>
-        <img class="detector_1" src="static/img/camera.png">
-        <img class="detector_2" src="static/img/camera.png">
     </div>
     <span></span>
-    <div id="s-content-2" class="s-content just-text">
+    <div id="s-content-2" class="s-content just-text" style="    background-image: url(static/img/sensor_trans.png);
+    background-size: 90vh;
+    background-repeat: no-repeat;
+    background-position-x: right;
+    background-position-y: bottom;">
+    <img class="detector_1" src="static/img/camera_2.png" style="width: 24vw;
+
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    transform: rotate(180deg) scaleX(-1);">
         <h4 class="header1">WHAT</h4>
         <i class="material-icons dash-icon">remove</i>
         <h1 class="header2">What is <img class="projectud-logo" src="" alt=""
@@ -67,8 +75,8 @@
     <span></span>
     <div id="s-content-5" class="s-content content-bigword-image" style="background-color: #fca41c;">
         <div class="bigword">HOW</div>
-        <div class="subcontent-image"
-            style="background-image:url(static/img/how.png);background-size: cover;background-position-y: 100%;"></div>
+        <i class="fas fa-cog gear" style="left: 0px; bottom: 0px;margin-left: -40vh;margin-bottom: -23vh;"></i>
+        <i class="fas fa-cog gear" style="right: 0px;top: 0px;margin-right: -40vh;margin-bottom: -23vh;"></i>
     </div>
     <span></span>
     <div id="s-content-6" class="s-content just-text"
@@ -85,8 +93,8 @@
         </p>
     </div>
     <span></span>
-    <div id="s-content-7" class="s-content just-text" style="background-color: #fca41c;">
-        <img class="image" src="/static/img/physicists.png" style="    height: 40vh;">
+    <div id="s-content-7" class="s-content just-text" style="vertical-align: baseline;background-color: #fca41c;">
+        <img class="image" src="/static/img/camera.png" style="transform: scaleY(-1);    height: 40vh;">
         <h4 class="header1">HOW</h4>
         <i class="material-icons dash-icon">remove</i>
         <h1 class="header2">Collecting data</h1>
@@ -114,10 +122,11 @@
         </div>
     </div>
     <span></span>
-    <div id="s-content-9" class="s-content content-bigword-image" style="background-color: #fca41c;">
+    <div id="s-content-9" class="s-content content-bigword-image" style="background-color: #fca41c;    background-image: url(static/img/physicists.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;">
         <div class="bigword">WHO</div>
-        <div class="subcontent-image"
-            style="background-image:url(static/img/how.png);background-size: cover;background-position-y: 100%;"></div>
+        
     </div>
     <span></span>
     <div id="s-content-10" class="s-content just-text">
@@ -136,7 +145,7 @@
                 data-theme="light" data-vanity="ömer-faruk-e-8901b7173"><a class="LI-simple-link"
                     href='https://www.linkedin.com/in/%C3%B6mer-faruk-e-8901b7173/?trk=profile-badge'>Ömer Faruk Erşahan</a></div>
         </p>
-        <a href="/asd"><i class="fab fa-github"></i></a>
+        <a href="https://github.com/cevenkadir/projectud"><i class="fab fa-github"></i></a>
     </div>
 
 </div>
@@ -159,9 +168,17 @@
         $(window).scroll(function () {
             var id = "#s-content-" + s_content_num + " ";
             var scr_due_position = $(id).offset().top - window.pageYOffset;
-            $('.LI-profile-badge, ' + id + ' .subcontent-image, ' + id + ' .bigword,' + id + '.image, ' + id + '.header1, ' + id + '.header2,' + id + '.header3,' + id + '.header4,' + id + '.parag, ' + id + '.material-icons').css('opacity', 2.5 - Math.exp(8 * (scr_due_position / $(id).height()) ** 2));
+            $('.LI-profile-badge, ' + id + ' .detector_1, ' + id + ' .subcontent-image, ' + id + ' .bigword,' + id + '.image, ' + id + '.header1, ' + id + '.header2,' + id + '.header3,' + id + '.header4,' + id + '.parag, ' + id + '.material-icons').css('opacity', 2.5 - Math.exp(8 * (scr_due_position / $(id).height()) ** 2));
         });
     }
+
+    function rotateGears(){
+        var scroll_y_position = window.pageYOffset;
+        var c = ".gear";
+        $(c).css('transform', 'rotate('+scroll_y_position+'deg)');
+    }
+
+    document.addEventListener('scroll', rotateGears)
 
     smoothFadeScroll(1);
     smoothFadeScroll(2);

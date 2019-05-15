@@ -51,6 +51,7 @@ button:focus {
 .navbar .navbar-logo .navbar-logo-subtext {
     font-size: x-small;
     text-align: right;
+    color: white;
 }
 
 .navbar .navbar-right-side {
@@ -325,4 +326,10 @@ hr.style1 {
 
 .LI-profile-badge{
     display: -webkit-inline-box;
+}
+
+.s-content .gear {
+    font-size: 80vh;
+    position: absolute;
+    color: rgb(107, 73, 22);
 }
