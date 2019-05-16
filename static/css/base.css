@@ -332,4 +332,19 @@ hr.style1 {
     font-size: 80vh;
     position: absolute;
     color: rgb(107, 73, 22);
+    position: absolute;
+}
+
+@media all and (max-width: 1200px) {
+    .s-content .gear {
+        display: none;
+    }
+
+    .scrolling-contents .content-bigword-image .bigword{
+        font-size: 12vh;
+    }
+
+    .scrolling-contents .s-content{
+        height: 50vh;
+    }
 }
