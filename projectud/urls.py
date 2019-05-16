@@ -20,12 +20,14 @@ from django.urls import path, include
 
 from django.conf import settings
 from django.views.static import serve
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('server_on_internet.urls')),
     
 ]
+urlpatterns += staticfiles_urlpatterns()
 
 if settings.DEBUG:
     from django.conf.urls.static import static
