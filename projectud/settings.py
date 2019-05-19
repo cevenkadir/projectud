@@ -34,7 +34,7 @@ SECRET_KEY = "1xg)tz&v_8m^!f6)p_w^ucuoy(&c9jtdtu$fdxi9_uhg(bt#dr"
 DEBUG = False
 
 
-ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'projectud.herokuapp.com']
 
 
 # Application definition

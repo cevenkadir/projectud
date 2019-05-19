@@ -14,8 +14,7 @@ import datetime as dt
 class Muon(models.Model):
     angle = models.FloatField('Calculated angle',default=0)
     detection_time = models.DateTimeField('Detection date', default=timezone.now())
-    image = models.ImageField('Muon image', upload_to='muons/', default='muons/muon_2019_4_18_14_17_12_650984.webp')
-    cropped_image = models.ImageField('Cropped muon image', upload_to='muons/cropped/', default='')
+    image = models.ImageField('Muon image', upload_to='muons/', default='')
 
     def process_muon(self):
         img = cv2.imread(self.image.path)
