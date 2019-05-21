@@ -1,8 +1,11 @@
-import cv2, imutils, os
+import cv2
+import imutils
+import os
 from skimage import measure
 import numpy as np
 import colorama
 import datetime as dt
+
 
 def are_there_particles(image, which='', add_mask=False):
     if np.shape(image) != ():
@@ -30,11 +33,12 @@ def are_there_particles(image, which='', add_mask=False):
 
             num_pixels = cv2.countNonZero(muons_mask)
 
-
-            print(colorama.Fore.YELLOW + "{}num of pix: {}".format(which, num_pixels)+ colorama.Style.RESET_ALL)
+            print(colorama.Fore.YELLOW + "{}num of pix: {}".format(which,
+                                                                   num_pixels) + colorama.Style.RESET_ALL)
             if num_pixels > 2:
                 currentDT = dt.datetime.now()
-                print(colorama.Fore.GREEN + str(currentDT) + colorama.Style.RESET_ALL)
+                print(colorama.Fore.GREEN + str(currentDT) +
+                      colorama.Style.RESET_ALL)
                 trigger = True
                 mask = cv2.add(mask, muons_mask)
 
@@ -44,6 +48,5 @@ def are_there_particles(image, which='', add_mask=False):
             return trigger
 
         #cv2.imshow('Test image', thresh)
-        #cv2.waitKey(0)
-        #cv2.destroyAllWindows()
-
+        # cv2.waitKey(0)
+        # cv2.destroyAllWindows()

@@ -26,11 +26,14 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('server_on_internet.urls')),
-
-    
+    url(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT})
 ]
 
 
+handler404 = 'server_on_internet.views.handler404'
+handler500 = 'server_on_internet.views.handler500'
+
 if settings.DEBUG:
-    
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)

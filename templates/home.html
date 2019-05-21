@@ -25,7 +25,7 @@
     background-repeat: no-repeat;
     background-position-x: right;
     background-position-y: bottom;">
-    <img class="detector_1" src="static/img/camera_2.png" style="width: 24vw;
+        <img class="detector_1" src="static/img/camera_2.png" style="width: 24vw;
 
     position: absolute;
     bottom: 0px;
@@ -94,7 +94,8 @@
     </div>
     <span></span>
     <div id="s-content-7" class="s-content just-text" style="vertical-align: baseline;background-color: #fca41c;">
-        <img class="image" src="/static/img/camera.png" style="    display: -webkit-box;ransform: scaleY(-1);width: 30vw;">
+        <img class="image" src="/static/img/camera.png"
+            style="    display: -webkit-inline-box;;transform: scaleY(-1);width: 30vw;">
         <h4 class="header1">HOW</h4>
         <i class="material-icons dash-icon">remove</i>
         <h1 class="header2">Collecting data</h1>
@@ -126,7 +127,7 @@
     background-size: cover;
     background-repeat: no-repeat;">
         <div class="bigword">WHO</div>
-        
+
     </div>
     <span></span>
     <div id="s-content-10" class="s-content just-text">
@@ -143,7 +144,8 @@
             </div>
             <div class="LI-profile-badge" data-version="v1" data-size="medium" data-locale="en_US" data-type="vertical"
                 data-theme="light" data-vanity="ömer-faruk-e-8901b7173"><a class="LI-simple-link"
-                    href='https://www.linkedin.com/in/%C3%B6mer-faruk-e-8901b7173/?trk=profile-badge'>Ömer Faruk Erşahan</a></div>
+                    href='https://www.linkedin.com/in/%C3%B6mer-faruk-e-8901b7173/?trk=profile-badge'>Ömer Faruk
+                    Erşahan</a></div>
         </p>
         <a href="https://github.com/cevenkadir/projectud"><i class="fab fa-github"></i></a>
     </div>
@@ -172,10 +174,10 @@
         });
     }
 
-    function rotateGears(){
-        var scroll_y_position = window.pageYOffset;
+    function rotateGears() {
+        var scroll_y_position = window.pageYOffset / 10;
         var c = ".gear";
-        $(c).css('transform', 'rotate('+scroll_y_position+'deg)');
+        $(c).css('transform', 'rotate(' + scroll_y_position + 'deg)');
     }
 
     document.addEventListener('scroll', rotateGears)

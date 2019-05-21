@@ -348,3 +348,53 @@ hr.style1 {
         height: 50vh;
     }
 }
+
+.error_page_bg_image {
+    background-image: url("/static/img/error.jpg");
+
+
+  filter: blur(4px);
+  -webkit-filter: blur(4px);
+
+
+  height: 100%; 
+
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transform: scale(1.1);
+}
+
+.error_page_bg_txt {
+
+  background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+  color: white;
+
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 100%;
+  padding: 100%;
+  text-align: center;
+}
+
+.error_page_bg_txt h1 {
+    font-size: 10vh;
+    margin-bottom: 20px;
+    font-weight: 900;
+}
+
+.error_page_bg_txt h2 {
+    font-size: 5vh;
+    margin-top: 0;
+}
+
+.error_page_bg_txt a {
+    font-size: 2vh;
+    text-decoration-line: unset;
+    color: white;
+}

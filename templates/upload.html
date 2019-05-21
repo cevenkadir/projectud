@@ -26,7 +26,23 @@
         <span class="material-icons mdc-fab__icon" style="margin-right: 5px;">cloud_upload</span>
         <span class="mdc-fab__label">Submit</span>
     </button>
+
+    <div class="mdc-snackbar mdc-snackbar--open" style="top: 0;">
+        <div class="mdc-snackbar__surface" style="display: none;position: absolute;top: 0;background-color: #3cb371;">
+
+            <div class="mdc-snackbar__label" role="status" aria-live="polite" style="font-weight: 600;">
+                <span class="material-icons" aria-hidden="true">check_circle_outline</span>
+                <span style="display: block;">Upload successful</span>
+
+            </div>
+            <div class="mdc-snackbar__actions">
+
+                <button class="mdc-icon-button mdc-snackbar__dismiss material-icons" title="Dismiss">close</button>
+            </div>
+        </div>
+    </div>
 </form>
+
 
 
 {% endblock content %}
@@ -64,6 +80,17 @@
         });
     });
 
+    $('.mdc-snackbar__dismiss').click(function () {
+        $('.mdc-snackbar__surface').css('display', 'none');
+    });
+
+    if (window.location.hash) {
+        var hash = window.location.hash.substring(1); //Puts hash in variable, and removes the # character
+        if (hash == 'success') {
+            $('.mdc-snackbar__surface').css('display', 'flex');
+        }
+        // hash found
+    }
 
 </script>
 {% endblock end-script %}

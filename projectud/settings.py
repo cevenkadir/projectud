@@ -31,7 +31,7 @@ SECRET_KEY = "1xg)tz&v_8m^!f6)p_w^ucuoy(&c9jtdtu$fdxi9_uhg(bt#dr"
 #AUTH_KEY = os.environ.get('AUTH_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'projectud.herokuapp.com']
@@ -132,7 +132,7 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 

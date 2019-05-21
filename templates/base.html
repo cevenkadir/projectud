@@ -24,7 +24,9 @@
         <div class="navbar-top">
             <div class="navbar-logo">
                 <a href="/" style="z-index: 1;display: flex;"><img src="" alt=""></a>
-                <a href="/" style="z-index: 1;text-decoration: none;"><div class="navbar-logo-subtext">directional muon detection</div></a>
+                <a href="/" style="z-index: 1;text-decoration: none;">
+                    <div class="navbar-logo-subtext">directional muon detection</div>
+                </a>
             </div>
             <div class="navbar-right-side" style="text-align: center;">
 
@@ -33,7 +35,8 @@
 
                 <div style="padding-top: 1em;display: -webkit-box;font-size: 1.5em;padding-left: 0.5em;color:#3b3e42;">
                     <i class="fas fa-angle-left"
-                        style="color: #a52a2a;opacity: 0.5;margin-right:0.5em;margin-left: -0.25em"></i>{{ number_of_muons }}</div>
+                        style="color: #a52a2a;opacity: 0.5;margin-right:0.5em;margin-left: -0.25em"></i>{{ number_of_muons }}
+                </div>
             </div>
             <!--{% if raspi_status %}
             <div class="right-side online">
@@ -110,4 +113,5 @@
     </div>
 </body>
 {% block end-script %}{% endblock end-script %}
+
 </html>
