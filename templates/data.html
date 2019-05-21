@@ -21,25 +21,25 @@
 
     {% for angle, count in counted_angles.items %}
     data.addRows([
-      [{{ angle| floatformat: 2 }}, null, {{ count }}, null, null]
+      [{{ angle|floatformat:2 }}, null, {{ count }}, null, null]
         ]);
   {% endfor %}
 
   {% for angle, count in theortical_data.items %}
   data.addRows([
-    [{{ angle| floatformat: 2 }}, {{ count| floatformat: 2}}, null, null, null]
+    [{{ angle|floatformat:2 }}, {{ count|floatformat:2}}, null, null, null]
   ]);
   {% endfor %}
 
   {% for angle, count in theortical_data_classical.items %}
   data.addRows([
-    [{{ angle| floatformat: 2 }}, null, null, {{ count| floatformat: 2}}, null]
+    [{{ angle|floatformat:2 }}, null, null, {{ count|floatformat:2}}, null]
   ]);
   {% endfor %}
 
   {% for angle, count in best_fitting.items %}
   data.addRows([
-    [{{ angle| floatformat: 2 }}, null, null, null, {{ count| floatformat: 2}}]
+    [{{ angle|floatformat:2 }}, null, null, null, {{ count|floatformat:2}}]
   ]);
   {% endfor %}
 
