@@ -37,7 +37,6 @@ class UploadParticlesView(FormView):
         form = self.get_form(form_class)
         files = request.FILES.getlist('file_field')
         if form.is_valid():
-            print(files)
             for f in files:
                 muon_i = Muon.objects.create(image=f)
                 muon_i.process_muon()
@@ -133,7 +132,6 @@ def theortical_data(includeTimeDilation=True):
             for r_i in r_range_with_dilation:
                 flux_i = np.power(
                     r_i, (1/np.cos(np.deg2rad(angles)) - 1)) * np.cos(np.deg2rad(angles))
-                print(flux_mean)
                 # print(flux_i)
                 flux_mean += flux_i
                 #flux_mean = np.add(flux_mean, flux_i)

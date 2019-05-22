@@ -53,7 +53,6 @@ class Muon(models.Model):
             delta_ls = np.abs(lengths[0] - lengths[1])
 
             calculated_angle = np.rad2deg(np.arctan((a * delta_ls)/d))
-            print(calculated_angle)
 
             self.angle = calculated_angle
 
