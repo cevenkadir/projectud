@@ -144,6 +144,8 @@ def theortical_data(includeTimeDilation=True):
         for i in range(num):
             try:
                 flux_dict[angles[i]] = flux_mean[i] * muons()[0]
+            except:
+                flux_dict = {}
         return flux_dict
 
 def calcError(request):
