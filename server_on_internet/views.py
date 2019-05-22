@@ -142,22 +142,26 @@ def theortical_data(includeTimeDilation=True):
                 r_no_time_dilation, (1/np.cos(np.deg2rad(angles)) - 1)) * np.cos(np.deg2rad(angles))
 
         for i in range(num):
-            flux_dict[angles[i]] = flux_mean[i] * muons()[0]
+            try:
+                flux_dict[angles[i]] = flux_mean[i] * muons()[0]
         return flux_dict
 
 def calcError(request):
-    measurement_data = muons()
-    theo_data = theortical_data()
+    try:
+        measurement_data = muons()
+        theo_data = theortical_data()
 
-    error_list = []
+        error_list = []
 
-    for key_i in measurement_data:
+        for key_i in measurement_data:
 
-        value_i = measurement_data[key_i]
-        value = theo_data[min(
-            theo_data.keys(), key=lambda k: abs(k-key_i))]
+            value_i = measurement_data[key_i]
+            value = theo_data[min(
+                theo_data.keys(), key=lambda k: abs(k-key_i))]
 
-        error_i = 100 * (value - value_i)/value
-        error_list.append(error_i)
+            error_i = 100 * (value - value_i)/value
+            error_list.append(error_i)
 
-    return {'calcError': sum(error_list)/len(error_list)}
+        return {'calcError': sum(error_list)/len(error_list)}
+    except:
+        return {'calcError': 0}
