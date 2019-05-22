@@ -20,28 +20,12 @@ import numpy as np
 from scipy.optimize import curve_fit
 
 
-def check_server(url, port):
-    if url == "localhost":
-        http_type = "http://"
-    else:
-        http_type = "https://"
-    try:
-        r = requests.post("{}{}:{}".format(http_type, url, port), json={
-                          "auth_key": settings.AUTH_KEY})
-        return r.json()['status']
-    except:
-        return False
-
-
 class HomePageView(TemplateView):
     template_name = 'home.html'
 
     def get_context_data(self, *args, **kwargs):
         context = super(HomePageView, self).get_context_data(*args, **kwargs)
-        context['raspi_status'] = check_server('localhost', 5000)
-        #context['raspi_status'] = check_server('projectud-kadrocuk.pitunnel.com', 80)
         return context
-
 
 class UploadParticlesView(FormView):
     form_class = UploadParticlesForm
@@ -68,57 +52,17 @@ class DataView(TemplateView):
 
     def get_context_data(self, *args, **kwargs):
         context = super(DataView, self).get_context_data(*args, **kwargs)
-        context['counted_angles'] = self.muons()
-        context['theortical_data'] = self.theortical_data()
-        context['theortical_data_classical'] = self.theortical_data(
+        context['counted_angles'] = muons()
+        context['theortical_data'] = theortical_data()
+        context['theortical_data_classical'] = theortical_data(
             includeTimeDilation=False)
         context['best_fitting'] = self.best_fitting()
         return context
 
-    def muons(self):
-        all_muons = Muon.objects.all()
-        all_angles = [muon_i.angle for muon_i in all_muons]
-
-        counted_angles = dict(Counter(all_angles))
-        counted_angles = dict(sorted(counted_angles.items()))
-        return counted_angles
-
-    def theortical_data(self, includeTimeDilation=True):
-        num = 100
-        angles = np.array(np.linspace(0, 90, num=num))
-
-        n = 10
-
-        num_muons_detected = Muon.objects.count()
-
-        flux_dict = {}
-
-        if includeTimeDilation:
-            r_range_with_dilation = np.array(np.linspace(0.1, 0.7, num=n))
-
-            flux_mean = np.zeros(num)
-
-            for r_i in r_range_with_dilation:
-                flux_i = np.power(
-                    r_i, (1/np.cos(np.deg2rad(angles)) - 1)) * np.cos(np.deg2rad(angles))
-                print(flux_mean)
-                # print(flux_i)
-                flux_mean += flux_i
-                #flux_mean = np.add(flux_mean, flux_i)
-            flux_mean = flux_mean / n
-        else:
-            r_no_time_dilation = 1.14e-10
-            flux_mean = np.power(
-                r_no_time_dilation, (1/np.cos(np.deg2rad(angles)) - 1)) * np.cos(np.deg2rad(angles))
-
-        for i in range(num):
-            flux_dict[angles[i]] = flux_mean[i] * self.muons()[0]
-        return flux_dict
-
     def best_fitting(self):
-        muons = self.muons()
-        x = np.array(list(muons.keys()))
-        y = np.array(list(muons.values()))
+        all_muons = muons()
+        x = np.array(list(all_muons.keys()))
+        y = np.array(list(all_muons.values()))
         z = np.polyfit(x, y, 3)
         p = np.poly1d(z)
 
@@ -161,3 +105,61 @@ def handler404(request, exception):
 
 def handler500(request):
     return render(request, 'error.html', status=500)
+
+
+def muons():
+    all_muons = Muon.objects.all()
+    all_angles = [muon_i.angle for muon_i in all_muons]
+
+    counted_angles = dict(Counter(all_angles))
+    counted_angles = dict(sorted(counted_angles.items()))
+    return counted_angles
+
+def theortical_data(includeTimeDilation=True):
+        num = 100
+        angles = np.array(np.linspace(0, 90, num=num))
+
+        n = 1000
+
+        num_muons_detected = Muon.objects.count()
+
+        flux_dict = {}
+
+        if includeTimeDilation:
+            r_range_with_dilation = np.array(np.linspace(0.1, 0.7, num=n))
+
+            flux_mean = np.zeros(num)
+
+            for r_i in r_range_with_dilation:
+                flux_i = np.power(
+                    r_i, (1/np.cos(np.deg2rad(angles)) - 1)) * np.cos(np.deg2rad(angles))
+                print(flux_mean)
+                # print(flux_i)
+                flux_mean += flux_i
+                #flux_mean = np.add(flux_mean, flux_i)
+            flux_mean = flux_mean / n
+        else:
+            r_no_time_dilation = 1.14e-10
+            flux_mean = np.power(
+                r_no_time_dilation, (1/np.cos(np.deg2rad(angles)) - 1)) * np.cos(np.deg2rad(angles))
+
+        for i in range(num):
+            flux_dict[angles[i]] = flux_mean[i] * muons()[0]
+        return flux_dict
+
+def calcError(request):
+    measurement_data = muons()
+    theo_data = theortical_data()
+
+    error_list = []
+
+    for key_i in measurement_data:
+
+        value_i = measurement_data[key_i]
+        value = theo_data[min(
+            theo_data.keys(), key=lambda k: abs(k-key_i))]
+
+        error_i = 100 * (value - value_i)/value
+        error_list.append(error_i)
+
+    return {'calcError': sum(error_list)/len(error_list)}
