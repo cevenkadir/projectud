@@ -4,7 +4,7 @@ colorama==0.4.1
 cycler==0.10.0
 decorator==4.4.0
 dj-database-url==0.5.0
-Django==2.2
+Django==2.2.20
 django-heroku==0.3.1
 django-mathfilters==0.4.0
 django-multiupload==0.5.2
